@@ -37,6 +37,15 @@ class Program
             return;
         }
         _logFilePath = args[3];
+
+        if (!Directory.Exists(_destinationFolder) && _destinationFolder != null)
+        {
+            Directory.CreateDirectory(_destinationFolder);
+        }
+        if (!Directory.Exists(_sourceFolder) && _sourceFolder != null)
+        {
+            Directory.CreateDirectory(_sourceFolder);
+        }
         
         SyncFolders(_sourceFolder,_destinationFolder);
         SetTimer(syncInterval);
